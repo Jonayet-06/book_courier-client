@@ -25,6 +25,13 @@ const Navbar = () => {
       <li>
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/dashboard/my-orders">My Orders</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -86,7 +93,7 @@ const Navbar = () => {
               <>
                 <div className="flex items-center gap-2">
                   <img
-                    className="w-[40px] h-[40px] rounded-full"
+                    className="w-10 h-10 rounded-full"
                     src={user?.photoURL}
                     alt=""
                   />
@@ -108,7 +115,7 @@ const Navbar = () => {
                   </button>
                 </Link>
                 <Link to="/register">
-                  <button className="btn bg-linear-to-r from-[#11998e] via-[#38ef7d] to-[#0fd850]">
+                  <button className="btn bg-linear-to-r from-[rgb(17,153,142)] via-[#38ef7d] to-[#0fd850]">
                     Register
                   </button>
                 </Link>

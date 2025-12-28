@@ -38,7 +38,8 @@ const Register = () => {
           };
 
           updateUserProfile(userProfile)
-            .then(() => {
+            .then((res) => {
+              console.log(res);
               console.log("User profile updated successfully.");
               navigate(location?.state || "/");
             })

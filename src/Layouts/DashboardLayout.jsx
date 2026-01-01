@@ -1,7 +1,15 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { FaCreditCard } from "react-icons/fa6";
+import {
+  FaBookMedical,
+  FaBookOpen,
+  FaClipboardList,
+  FaCreditCard,
+  FaUsers,
+  FaUserShield,
+} from "react-icons/fa6";
 import { ImProfile } from "react-icons/im";
+import { MdLibraryBooks } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 const DashboardLayout = () => {
   return (
@@ -31,7 +39,7 @@ const DashboardLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <div className="px-4">Book Courier</div>
+          <div className="px-4 text-3xl">Book Courier_User Dashboard</div>
         </nav>
         {/* Page content here */}
         <Outlet></Outlet>
@@ -72,6 +80,7 @@ const DashboardLayout = () => {
             </li>
 
             {/* our dashboard links */}
+            {/* For User  */}
             <li>
               <button
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -116,29 +125,102 @@ const DashboardLayout = () => {
                 </NavLink>
               </button>
             </li>
-            {/* List item */}
+            {/* for librarian  */}
             <li>
               <button
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Settings"
+                data-tip="Add Book By Librarian"
               >
-                {/* Settings icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
+                <NavLink
+                  className="flex items-center gap-2"
+                  to="/dashboard/add-book-by-librarian"
                 >
-                  <path d="M20 7h-9"></path>
-                  <path d="M14 17H5"></path>
-                  <circle cx="17" cy="17" r="3"></circle>
-                  <circle cx="7" cy="7" r="3"></circle>
-                </svg>
-                <span className="is-drawer-close:hidden">Settings</span>
+                  <FaBookMedical />
+                  <span className="is-drawer-close:hidden">
+                    Add Book By Librarian
+                  </span>
+                </NavLink>
+              </button>
+            </li>
+            <li>
+              <button
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Books For Librarian"
+              >
+                <NavLink
+                  className="flex items-center gap-2"
+                  to="/dashboard/my-books-for-librarian"
+                >
+                  <FaBookOpen />
+                  <span className="is-drawer-close:hidden">
+                    My Book By Librarian
+                  </span>
+                </NavLink>
+              </button>
+            </li>
+            <li>
+              <button
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Orders For Librarian"
+              >
+                <NavLink
+                  className="flex items-center gap-2"
+                  to="/dashboard/orders-for-librarian"
+                >
+                  <FaClipboardList />
+                  <span className="is-drawer-close:hidden">
+                    Orders For Librarian
+                  </span>
+                </NavLink>
+              </button>
+            </li>
+            {/* for Admin  */}
+            <li>
+              <button
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Users Management"
+              >
+                <NavLink
+                  className="flex items-center gap-2"
+                  to="/dashboard/users-management"
+                >
+                  <FaUsers />
+                  <span className="is-drawer-close:hidden">
+                    Users Management
+                  </span>
+                </NavLink>
+              </button>
+            </li>
+            <li>
+              <button
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Manage Books For Admin"
+              >
+                <NavLink
+                  className="flex items-center gap-2"
+                  to="/dashboard/manage-books-for-admin"
+                >
+                  <MdLibraryBooks />
+                  <span className="is-drawer-close:hidden">
+                    Manage Books For Admin
+                  </span>
+                </NavLink>
+              </button>
+            </li>
+            <li>
+              <button
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Profile For Admin"
+              >
+                <NavLink
+                  className="flex items-center gap-2"
+                  to="/dashboard/my-profile-for-admin"
+                >
+                  <FaUserShield />
+                  <span className="is-drawer-close:hidden">
+                    My Profile For Admin
+                  </span>
+                </NavLink>
               </button>
             </li>
           </ul>

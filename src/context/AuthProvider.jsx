@@ -51,6 +51,9 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const updateUserProfileInitial = (updateUserData) => {
+    return updateProfile(auth.currentUser, updateUserData);
+  };
   const updateUserProfile = async (name, photoURL) => {
     updateProfile(auth.currentUser, {
       displayName: name,
@@ -72,6 +75,7 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     updateUserProfile,
+    updateUserProfileInitial,
   };
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };

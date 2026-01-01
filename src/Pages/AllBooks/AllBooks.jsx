@@ -8,7 +8,7 @@ const AllBooks = () => {
   const [allBooks, setAllBooks] = useState([]);
 
   useEffect(() => {
-    axiosSecure.get("/books").then((res) => {
+    axiosSecure.get("/addedNewBooks").then((res) => {
       console.log(res.data);
       setAllBooks(res.data);
     });
@@ -21,7 +21,7 @@ const AllBooks = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {allBooks.map((book) => (
             <Link
-              to={`/books/${book._id}`}
+              to={`/addedNewBooks/${book._id}`}
               key={book._id}
               className="card bg-base-100 shadow-sm"
             >

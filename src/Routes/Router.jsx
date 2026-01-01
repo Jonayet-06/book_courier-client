@@ -15,6 +15,14 @@ import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../Pages/Dashboard/Payment/PaymentCancelled";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement";
+import AddBookByLibrarian from "../Pages/Dashboard/AddBookByLibrarian/AddBookByLibrarian";
+import MyBooksForLibrarian from "../Pages/Dashboard/MyBooksForLibrarian/MyBooksForLibrarian";
+import EditBook from "../Pages/Dashboard/EditBook/EditBook";
+import OrdersForLibrarian from "../Pages/Dashboard/OrdersForLibrarian/OrdersForLibrarian";
+import MyProfileForAdmin from "../Pages/Dashboard/MyProfileForAdmin/MyProfileForAdmin";
+import ManageBooksForAdmin from "../Pages/Dashboard/ManageBooksForAdmin/ManageBooksForAdmin";
+// import EditBook from "../Pages/EditBook/EditBook";
 
 const Router = createBrowserRouter([
   {
@@ -26,11 +34,11 @@ const Router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "/books",
+        path: "/addedNewBooks",
         Component: AllBooks,
       },
       {
-        path: "/books/:id",
+        path: "/addedNewBooks/:id",
         Component: BookDetails,
       },
     ],
@@ -76,6 +84,34 @@ const Router = createBrowserRouter([
       {
         path: "payment-history",
         Component: PaymentHistory,
+      },
+      {
+        path: "users-management",
+        Component: UsersManagement,
+      },
+      {
+        path: "add-book-by-librarian",
+        Component: AddBookByLibrarian,
+      },
+      {
+        path: "my-books-for-librarian",
+        Component: MyBooksForLibrarian,
+      },
+      {
+        path: "edit-book/:id",
+        Component: EditBook,
+      },
+      {
+        path: "orders-for-librarian",
+        Component: OrdersForLibrarian,
+      },
+      {
+        path: "my-profile-for-admin",
+        Component: MyProfileForAdmin,
+      },
+      {
+        path: "manage-books-for-admin",
+        Component: ManageBooksForAdmin,
       },
     ],
   },

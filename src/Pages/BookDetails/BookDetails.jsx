@@ -15,7 +15,7 @@ const BookDetails = () => {
   const { register, handleSubmit } = useForm();
 
   useEffect(() => {
-    axiosSecure.get(`/books/${id}`).then((res) => {
+    axiosSecure.get(`/addedNewBooks/${id}`).then((res) => {
       //   console.log(res.data);
       setBook(res.data);
     });
@@ -29,7 +29,7 @@ const BookDetails = () => {
     orderModalRef.current.showModal();
   };
 
-  const onSubmitData = async (data) => {
+  const onSubmit = async (data) => {
     const orderData = {
       bookId: book._id,
       bookName: book.name,
@@ -74,7 +74,10 @@ const BookDetails = () => {
         <div className="modal-box">
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
-              <form onSubmit={handleSubmit(onSubmitData)} className="fieldset">
+              <form
+                onSubmit={(e) => handleSubmit(onSubmit)(e)}
+                className="fieldset"
+              >
                 {/* Name */}
                 <label className="label">Name</label>
                 <input

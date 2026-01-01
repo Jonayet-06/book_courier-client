@@ -85,6 +85,7 @@ const MyOrders = () => {
               <th>Book Price</th>
               <th>Order Date</th>
               <th>Payment Status</th>
+              <th>Delivery Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -106,6 +107,7 @@ const MyOrders = () => {
                     <span className="badge badge-error">Cancelled</span>
                   )}
                 </td>
+                <td>{order.deliveryStatus}</td>
                 <td>
                   {order.status === "paid" && (
                     <button

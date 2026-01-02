@@ -11,7 +11,9 @@ import {
 import { ImProfile } from "react-icons/im";
 import { MdLibraryBooks } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
+import useRole from "../hooks/useRole";
 const DashboardLayout = () => {
+  const { role } = useRole();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -81,148 +83,160 @@ const DashboardLayout = () => {
 
             {/* our dashboard links */}
             {/* For User  */}
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My Orders"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/my-orders"
-                >
-                  <FaShoppingCart />
-                  <span className="is-drawer-close:hidden">My Orders</span>
-                </NavLink>
-              </button>
-            </li>
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My Profile"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/my-profile"
-                >
-                  <ImProfile />
-                  <span className="is-drawer-close:hidden">My Profile</span>
-                </NavLink>
-              </button>
-            </li>
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Payment History"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/payment-history"
-                >
-                  <FaCreditCard />
-                  <span className="is-drawer-close:hidden">
-                    Payment History
-                  </span>
-                </NavLink>
-              </button>
-            </li>
+            {role === "user" && (
+              <>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Orders"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/my-orders"
+                    >
+                      <FaShoppingCart />
+                      <span className="is-drawer-close:hidden">My Orders</span>
+                    </NavLink>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Profile"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/my-profile"
+                    >
+                      <ImProfile />
+                      <span className="is-drawer-close:hidden">My Profile</span>
+                    </NavLink>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Payment History"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/payment-history"
+                    >
+                      <FaCreditCard />
+                      <span className="is-drawer-close:hidden">
+                        Payment History
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+              </>
+            )}
             {/* for librarian  */}
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Add Book By Librarian"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/add-book-by-librarian"
-                >
-                  <FaBookMedical />
-                  <span className="is-drawer-close:hidden">
-                    Add Book By Librarian
-                  </span>
-                </NavLink>
-              </button>
-            </li>
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My Books For Librarian"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/my-books-for-librarian"
-                >
-                  <FaBookOpen />
-                  <span className="is-drawer-close:hidden">
-                    My Book By Librarian
-                  </span>
-                </NavLink>
-              </button>
-            </li>
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Orders For Librarian"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/orders-for-librarian"
-                >
-                  <FaClipboardList />
-                  <span className="is-drawer-close:hidden">
-                    Orders For Librarian
-                  </span>
-                </NavLink>
-              </button>
-            </li>
+            {role === "librarian" && (
+              <>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Add Book By Librarian"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/add-book-by-librarian"
+                    >
+                      <FaBookMedical />
+                      <span className="is-drawer-close:hidden">
+                        Add Book By Librarian
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Books For Librarian"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/my-books-for-librarian"
+                    >
+                      <FaBookOpen />
+                      <span className="is-drawer-close:hidden">
+                        My Book By Librarian
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Orders For Librarian"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/orders-for-librarian"
+                    >
+                      <FaClipboardList />
+                      <span className="is-drawer-close:hidden">
+                        Orders For Librarian
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+              </>
+            )}
             {/* for Admin  */}
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Users Management"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/users-management"
-                >
-                  <FaUsers />
-                  <span className="is-drawer-close:hidden">
-                    Users Management
-                  </span>
-                </NavLink>
-              </button>
-            </li>
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Manage Books For Admin"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/manage-books-for-admin"
-                >
-                  <MdLibraryBooks />
-                  <span className="is-drawer-close:hidden">
-                    Manage Books For Admin
-                  </span>
-                </NavLink>
-              </button>
-            </li>
-            <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My Profile For Admin"
-              >
-                <NavLink
-                  className="flex items-center gap-2"
-                  to="/dashboard/my-profile-for-admin"
-                >
-                  <FaUserShield />
-                  <span className="is-drawer-close:hidden">
-                    My Profile For Admin
-                  </span>
-                </NavLink>
-              </button>
-            </li>
+            {role === "admin" && (
+              <>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Users Management"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/users-management"
+                    >
+                      <FaUsers />
+                      <span className="is-drawer-close:hidden">
+                        Users Management
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Manage Books For Admin"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/manage-books-for-admin"
+                    >
+                      <MdLibraryBooks />
+                      <span className="is-drawer-close:hidden">
+                        Manage Books For Admin
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Profile For Admin"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/my-profile-for-admin"
+                    >
+                      <FaUserShield />
+                      <span className="is-drawer-close:hidden">
+                        My Profile For Admin
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

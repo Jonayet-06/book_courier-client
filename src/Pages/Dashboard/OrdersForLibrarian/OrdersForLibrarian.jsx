@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { AxiosHeaders } from "axios";
-import React from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
@@ -109,33 +108,35 @@ const OrdersForLibrarian = () => {
                   {order.deliveryStatus}
                 </td>
                 <td>
-                  {order.deliveryStatus !== "cancelled" && (
-                    <>
-                      <select
-                        value={order.deliveryStatus}
-                        onChange={(e) =>
-                          handleStatusChange(order._id, e.target.value)
-                        }
-                        className="select select-sm"
-                      >
-                        <option value="pending">Pending</option>
-                        <option value="shipped">Shipped</option>
-                        <option value="delivered">Delivered</option>
-                      </select>
-                    </>
-                  )}
+                  {order.deliveryStatus !== "cancelled" &&
+                    order.deliveryStatus !== "delivered" && (
+                      <>
+                        <select
+                          value={order.deliveryStatus}
+                          onChange={(e) =>
+                            handleStatusChange(order._id, e.target.value)
+                          }
+                          className="select select-sm"
+                        >
+                          <option value="pending">Pending</option>
+                          <option value="shipped">Shipped</option>
+                          <option value="delivered">Delivered</option>
+                        </select>
+                      </>
+                    )}
                 </td>
                 <td>
-                  {order.deliveryStatus !== "cancelled" && (
-                    <>
-                      <button
-                        onClick={() => handleCancel(order._id)}
-                        className="btn bg-linear-to-r from-[#11998e] via-[#38ef7d] to-[#0fd850]"
-                      >
-                        Cancel
-                      </button>
-                    </>
-                  )}
+                  {order.deliveryStatus !== "cancelled" &&
+                    order.deliveryStatus !== "delivered" && (
+                      <>
+                        <button
+                          onClick={() => handleCancel(order._id)}
+                          className="btn bg-linear-to-r from-[#11998e] via-[#38ef7d] to-[#0fd850]"
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    )}
                 </td>
               </tr>
             ))}

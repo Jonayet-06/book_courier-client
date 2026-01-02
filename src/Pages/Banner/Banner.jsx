@@ -18,7 +18,10 @@ const Banner = () => {
         <div className="banner-content">
           <h2>The Art of Reading</h2>
           <p>Explore books that spark imagination and creativity.</p>
-          <Link className="btn bg-linear-to-r from-[#11998e] via-[#38ef7d] to-[#0fd850]">
+          <Link
+            to="/addedNewBooks"
+            className="btn bg-linear-to-r from-[#11998e] via-[#38ef7d] to-[#0fd850]"
+          >
             View All Books
           </Link>
         </div>

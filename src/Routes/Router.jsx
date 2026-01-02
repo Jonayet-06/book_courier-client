@@ -22,6 +22,8 @@ import EditBook from "../Pages/Dashboard/EditBook/EditBook";
 import OrdersForLibrarian from "../Pages/Dashboard/OrdersForLibrarian/OrdersForLibrarian";
 import MyProfileForAdmin from "../Pages/Dashboard/MyProfileForAdmin/MyProfileForAdmin";
 import ManageBooksForAdmin from "../Pages/Dashboard/ManageBooksForAdmin/ManageBooksForAdmin";
+import LatestBooks from "../Pages/LatestBooks/LatestBooks";
+import Coverage from "../Pages/Coverage/Coverage";
 // import EditBook from "../Pages/EditBook/EditBook";
 
 const Router = createBrowserRouter([
@@ -40,6 +42,14 @@ const Router = createBrowserRouter([
       {
         path: "/addedNewBooks/:id",
         Component: BookDetails,
+      },
+      {
+        path: "/latest-books",
+        Component: LatestBooks,
+      },
+      {
+        path: "/coverage",
+        Component: Coverage,
       },
     ],
   },

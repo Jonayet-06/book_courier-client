@@ -24,6 +24,9 @@ import MyProfileForAdmin from "../Pages/Dashboard/MyProfileForAdmin/MyProfileFor
 import ManageBooksForAdmin from "../Pages/Dashboard/ManageBooksForAdmin/ManageBooksForAdmin";
 import LatestBooks from "../Pages/LatestBooks/LatestBooks";
 import Coverage from "../Pages/Coverage/Coverage";
+import WhyChooseBookCourier from "../Pages/WhyChooseBookCourier/WhyChooseBookCourier";
+import HowItWorks from "../Pages/HowItWorks/HowItWorks";
+import BookCourierStats from "../Pages/BookCourierStats/BookCourierStats";
 // import EditBook from "../Pages/EditBook/EditBook";
 
 const Router = createBrowserRouter([
@@ -50,6 +53,18 @@ const Router = createBrowserRouter([
       {
         path: "/coverage",
         Component: Coverage,
+      },
+      {
+        path: "/whyChooseBookCourier",
+        Component: WhyChooseBookCourier,
+      },
+      {
+        path: "/howItWorks",
+        Component: <HowItWorks></HowItWorks>,
+      },
+      {
+        path: "/bookCourierStats",
+        Component: <BookCourierStats></BookCourierStats>,
       },
     ],
   },

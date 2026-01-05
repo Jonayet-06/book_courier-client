@@ -5,12 +5,16 @@ import { Link } from "react-router";
 const AllBooks = () => {
   const axiosSecure = useAxiosSecure();
   const [allBooks, setAllBooks] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
-    axiosSecure.get("/addedNewBooks").then((res) => {
-      setAllBooks(res.data);
-    });
-  }, [axiosSecure]);
+    axiosSecure
+      .get(`/addedNewBooks?searchText=${searchText}&sortOrder=${sortOrder}`)
+      .then((res) => {
+        setAllBooks(res.data);
+      });
+  }, [axiosSecure, searchText, sortOrder]);
 
   // 🔹 Ensure absolute image URL
   const getImageUrl = (image) => {
@@ -23,9 +27,45 @@ const AllBooks = () => {
     <div className="max-w-7xl mx-auto">
       {/* Heading */}
       <h2 className="font-bold text-4xl text-center my-10">All Books</h2>
+      {/* <p>Search Text: {searchText}</p> */}
+      <div className="flex justify-between">
+        <label className="input">
+          <svg
+            className="h-[1em] opacity-50"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <g
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              strokeWidth="2.5"
+              fill="none"
+              stroke="currentColor"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </g>
+          </svg>
+          <input
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            type="search"
+            className="grow"
+            placeholder="Search Book"
+          />
+        </label>
 
+        <select
+          className="select select-bordered"
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+        >
+          <option value="asc">Price: Low → High</option>
+          <option value="desc">Price: High → Low</option>
+        </select>
+      </div>
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-4">
         {allBooks.map((book) => (
           <Link
             to={`/addedNewBooks/${book._id}`}

@@ -27,6 +27,7 @@ import Coverage from "../Pages/Coverage/Coverage";
 import WhyChooseBookCourier from "../Pages/WhyChooseBookCourier/WhyChooseBookCourier";
 import HowItWorks from "../Pages/HowItWorks/HowItWorks";
 import BookCourierStats from "../Pages/BookCourierStats/BookCourierStats";
+import MyWishlist from "../Pages/Dashboard/MyWishlist/MyWishlist";
 // import EditBook from "../Pages/EditBook/EditBook";
 
 const Router = createBrowserRouter([
@@ -44,7 +45,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/addedNewBooks/:id",
-        Component: BookDetails,
+        element: (
+          <PrivateRoute>
+            <BookDetails></BookDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/latest-books",
@@ -137,6 +142,10 @@ const Router = createBrowserRouter([
       {
         path: "manage-books-for-admin",
         Component: ManageBooksForAdmin,
+      },
+      {
+        path: "my-wishlist",
+        Component: MyWishlist,
       },
     ],
   },

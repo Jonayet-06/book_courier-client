@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa6";
 import { ImProfile } from "react-icons/im";
 import { MdLibraryBooks } from "react-icons/md";
+import { AiOutlineHeart } from "react-icons/ai";
 import { Link, NavLink, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 const DashboardLayout = () => {
@@ -125,6 +126,22 @@ const DashboardLayout = () => {
                       <FaCreditCard />
                       <span className="is-drawer-close:hidden">
                         Payment History
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Wishlist"
+                  >
+                    <NavLink
+                      className="flex items-center gap-2"
+                      to="/dashboard/my-wishlist"
+                    >
+                      <AiOutlineHeart />
+                      <span className="is-drawer-close:hidden">
+                        My Wishlist
                       </span>
                     </NavLink>
                   </button>

@@ -16,12 +16,34 @@ const MyWishlist = () => {
   return (
     <div>
       <h2 className="text-4xl text-center">My Wishlist</h2>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
+      <div className="md:hidden space-y-4">
+        {books.map((book, index) => (
+          <div
+            key={book._id || index}
+            className="card bg-base-100 shadow-md p-4 flex flex-col gap-2"
+          >
+            <div className="flex items-center gap-3">
+              <div className="avatar">
+                <div className="mask mask-squircle h-16 w-16">
+                  <img src={book.image} alt={book.bookTitle} />
+                </div>
+              </div>
+              <div>
+                <p className="font-semibold">{book.bookTitle}</p>
+                <p className="text-sm text-gray-600">{book.bookName}</p>
+              </div>
+            </div>
+            <p> User: {book.userName}</p>
+            <p> Book Title: {book.bookTitle}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden md:block overflow-x-auto">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
-              <th>SL. No.</th>
+              <th>#</th>
               <th>User Name</th>
               <th>Book Image</th>
               <th>Book Name</th>
@@ -30,7 +52,7 @@ const MyWishlist = () => {
           </thead>
           <tbody>
             {books.map((book, index) => (
-              <tr>
+              <tr key={book._id || index}>
                 <td>{index + 1}</td>
                 <td>{book.userName}</td>
                 <td>

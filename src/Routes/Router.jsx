@@ -28,6 +28,7 @@ import WhyChooseBookCourier from "../Pages/WhyChooseBookCourier/WhyChooseBookCou
 import HowItWorks from "../Pages/HowItWorks/HowItWorks";
 import BookCourierStats from "../Pages/BookCourierStats/BookCourierStats";
 import MyWishlist from "../Pages/Dashboard/MyWishlist/MyWishlist";
+import AdminRoute from "./AdminRoute";
 // import EditBook from "../Pages/EditBook/EditBook";
 
 const Router = createBrowserRouter([
@@ -117,7 +118,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "users-management",
-        Component: UsersManagement,
+        element: (
+          <AdminRoute>
+            <UsersManagement></UsersManagement>
+          </AdminRoute>
+        ),
       },
       {
         path: "add-book-by-librarian",

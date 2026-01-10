@@ -18,29 +18,63 @@ const PaymentHistory = () => {
       <h2 className="text-5xl text-center">
         Payment History:{payments.length}
       </h2>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
-          {/* head */}
+      <div className="md:hidden space-y-4">
+        {payments.map((payment, index) => (
+          <div
+            key={payment._id || index}
+            className="card bg-base-100 shadow-md p-4"
+          >
+            <h3 className="font-semibold text-lg mb-2">{payment.bookName}</h3>
+
+            <p>
+              <b>Transaction:</b> {payment.transactionId}
+            </p>
+            <p>
+              <b>Amount:</b> ${payment.amount}
+            </p>
+            <p>
+              <b>Status:</b>{" "}
+              <span className="badge badge-success">
+                {payment.paymentStatus}
+              </span>
+            </p>
+            <p>
+              <b>Email:</b> {payment.customerEmail}
+            </p>
+            <p>
+              <b>Date:</b> {new Date(payment.paidAt).toLocaleDateString()}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden md:block overflow-x-auto">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
-              <th>SL. No.</th>
-              <th>Book Name</th>
-              <th>Payment Id</th>
+              <th>#</th>
+              <th>Book</th>
+              <th>Transaction ID</th>
               <th>Amount</th>
-              <th>Payment Status</th>
+              <th>Status</th>
               <th>Email</th>
               <th>Paid Date</th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
             {payments.map((payment, index) => (
-              <tr>
-                <th>{index + 1}</th>
+              <tr key={payment._id || index}>
+                <td>{index + 1}</td>
                 <td>{payment.bookName}</td>
-                <td>{payment.transactionId}</td>
-                <td>{payment.amount}</td>
-                <td>{payment.paymentStatus}</td>
+                <td className="truncate max-w-[180px]">
+                  {payment.transactionId}
+                </td>
+                <td>${payment.amount}</td>
+                <td>
+                  <span className="badge badge-success">
+                    {payment.paymentStatus}
+                  </span>
+                </td>
                 <td>{payment.customerEmail}</td>
                 <td>{new Date(payment.paidAt).toLocaleString()}</td>
               </tr>

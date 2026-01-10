@@ -82,7 +82,7 @@ const ManageBooksForAdmin = () => {
           </thead>
           <tbody>
             {newBooks.map((book, index) => (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center gap-3">

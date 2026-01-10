@@ -73,7 +73,7 @@ const UsersManagement = () => {
   return (
     <div>
       <h2 className="text-4xl">All Users : {users.length}</h2>
-      <div className="overflow-x-auto">
+      <div className="hidden lg:block overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
@@ -88,7 +88,7 @@ const UsersManagement = () => {
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center gap-3">
@@ -140,6 +140,57 @@ const UsersManagement = () => {
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:hidden">
+        {users.map((user, index) => (
+          <div
+            key={index}
+            className="border rounded-lg p-4 shadow-sm flex flex-col gap-2"
+          >
+            <div className="flex items-center gap-3">
+              <div className="avatar">
+                <div className="mask mask-squircle h-12 w-12">
+                  <img src={user.photoURL} alt={user.displayName} />
+                </div>
+              </div>
+              <div className="flex-1">
+                <p className="font-bold">{user.displayName}</p>
+                <p className="text-sm text-gray-500">{user.email}</p>
+                <div className="mt-1">
+                  {user.role === "admin" ? (
+                    <button className="badge badge-warning">
+                      <MdAdminPanelSettings />
+                    </button>
+                  ) : user.role === "librarian" ? (
+                    <button className="badge badge-info">
+                      <FaUserTie />
+                    </button>
+                  ) : (
+                    <button className="badge badge-success">
+                      <FaUser />
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2 mt-2">
+              <button
+                onClick={() => handleMakeLibrarian(user)}
+                className="btn btn-sm w-full bg-linear-to-r from-[#11998e] via-[#38ef7d] to-[#0fd850]"
+              >
+                Make Librarian
+              </button>
+              <button
+                onClick={() => handleMakeAdmin(user)}
+                className="btn btn-sm w-full bg-linear-to-r from-[#11998e] via-[#38ef7d] to-[#0fd850]"
+              >
+                Make Admin
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
